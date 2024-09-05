@@ -1,4 +1,4 @@
-export default function({HOR_LINES,VER_LINES,BOX,turn,onSelectButton}){
+export default function({HOR_LINES,VER_LINES,BOX,onSelectButton}){
     // console.log("gameboard")
 
     function makeRow1(row){

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import GameBoard from './GameBoard';
 import GameOver from './GameOver';
 
-const HOR_LINES = [
+const INITIAL_HOR_LINES = [
   [false,false,false,false,false,false],
   [false,false,false,false,false,false],
   [false,false,false,false,false,false],
@@ -12,7 +12,7 @@ const HOR_LINES = [
   [false,false,false,false,false,false],
 ];
 
-const VER_LINES = [
+const INITIAL_VER_LINES = [
   [false,false,false,false,false,false,false],
   [false,false,false,false,false,false,false],
   [false,false,false,false,false,false,false],
@@ -21,7 +21,7 @@ const VER_LINES = [
   [false,false,false,false,false,false,false],
 ];
 
-const BOX = [
+const INITIAL_BOX = [
   [false,false,false,false,false,false],
   [false,false,false,false,false,false],
   [false,false,false,false,false,false],
@@ -29,6 +29,10 @@ const BOX = [
   [false,false,false,false,false,false],
   [false,false,false,false,false,false],
 ];
+
+let HOR_LINES = structuredClone(INITIAL_HOR_LINES);
+let VER_LINES = structuredClone(INITIAL_VER_LINES);
+let BOX =structuredClone(INITIAL_BOX);
 
 let redPoints = 0;
 let bluePoints = 0;
@@ -71,12 +75,14 @@ function checkBoxEdges(color, row, col){
   return false;
 }
 
+
+
 function App() {
   const [playerTurn,setPlayerTurn] = useState("red");
   const [playerPoints, setPlayerPoints] = useState(0);
 
   // checkBoxEdges("red", 0, 0)
-  // console.log(BOX[0][0]);
+  // console.log(INITIAL_HOR_LINES);
 
   let turnText = "text-center m-5 text-2xl "
   if(playerTurn === "red"){
@@ -125,13 +131,21 @@ function App() {
     }
   }
 
+  function handleRestart(){
+    HOR_LINES = structuredClone(INITIAL_HOR_LINES);
+    VER_LINES = structuredClone(INITIAL_VER_LINES);
+    BOX =structuredClone(INITIAL_BOX);
+    setPlayerPoints(0);
+    setPlayerTurn("red");
+  }
+
 
     return (
       <>
-        {(playerPoints >= 36) && <GameOver redPoints={redPoints} bluePoints={bluePoints}></GameOver>}
+        {(playerPoints >= 36) && <GameOver redPoints={redPoints} bluePoints={bluePoints} handleRestart={handleRestart}></GameOver>}
 
         <h3 className={turnText} >{playerTurn}</h3>
-        <ol className= "flex flex-wrap justify-center gap-0 m-5 p-5 bg-slate-500 flex-col">
+        <ol className= "flex flex-wrap self-center justify-center gap-0 m-auto p-10 bg-slate-500 flex-col w-min">
           <GameBoard HOR_LINES={HOR_LINES} VER_LINES={VER_LINES} BOX={BOX} turn={playerTurn} onSelectButton={handleClickButton}/>
         </ol>
         
