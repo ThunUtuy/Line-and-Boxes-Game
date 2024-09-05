@@ -11,3 +11,9 @@ Download the project and open the folder in your prefered IDE. In the terminal t
 
 ### How to play the game?
 The turn alternates between 2 players, red and blue. Each player can click a line to claim it. The player to press the line that completes the box will capture that box and can continue on with their turn. There are 36 boxes. Once all the lines are claimed, the player who has the most boxes win.
+
+<img src="https://github.com/user-attachments/assets/f2a116e9-aeb8-4dd5-b23f-5bba2de5ea0c" alt="Board during gameplay" width="500" height="600"/>
+<img src="https://github.com/user-attachments/assets/f44e1452-80c0-4143-b845-d369493177fa" alt="Gameover Red Win. Restart Button." width="500" height="600"/>
+
+
+
