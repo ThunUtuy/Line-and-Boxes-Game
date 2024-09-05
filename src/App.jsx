@@ -128,14 +128,12 @@ function App() {
 
     return (
       <>
-        <div>
-          {(playerPoints >= 36) && <GameOver redPoints={redPoints} bluePoints={bluePoints}></GameOver>}
+        {(playerPoints >= 36) && <GameOver redPoints={redPoints} bluePoints={bluePoints}></GameOver>}
 
-          <h3 className={turnText} >{playerTurn}</h3>
-          <ol className= "flex flex-wrap justify-center gap-0 m-5 p-5 bg-slate-500 flex-col">
-            <GameBoard HOR_LINES={HOR_LINES} VER_LINES={VER_LINES} BOX={BOX} turn={playerTurn} onSelectButton={handleClickButton}/>
-          </ol>
-        </div>
+        <h3 className={turnText} >{playerTurn}</h3>
+        <ol className= "flex flex-wrap justify-center gap-0 m-5 p-5 bg-slate-500 flex-col">
+          <GameBoard HOR_LINES={HOR_LINES} VER_LINES={VER_LINES} BOX={BOX} turn={playerTurn} onSelectButton={handleClickButton}/>
+        </ol>
         
         <h3 className="text-center m-5 text-2xl text-red-500" >Red: {redPoints}</h3>
         <h3 className="text-center m-5 text-2xl text-blue-500" >Blue: {bluePoints}</h3>
