@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import GameBoard from './GameBoard';
+import GameOver from './GameOver';
 
 const HOR_LINES = [
   [false,false,false,false,false,false],
@@ -109,7 +110,6 @@ function App() {
     const adjBoxes = checkAdjBox(type,row,col);
     let boxChange = false;
     for(const box of adjBoxes){
-      console.log(box[0]);
       if(checkBoxEdges(playerTurn,box[0],box[1])){
         boxChange = true;
         setPlayerPoints((points) => points + 1);
@@ -128,11 +128,15 @@ function App() {
 
     return (
       <>
-        {(playerPoints >= 36) && <h3 className="text-center m-5 text-4xl text-yellow-500" >Game Over</h3>}
-        <h3 className={turnText} >{playerTurn}</h3>
-        <ol className= "flex flex-wrap justify-center gap-0 m-5 p-5 bg-slate-500 flex-col">
-          <GameBoard HOR_LINES={HOR_LINES} VER_LINES={VER_LINES} BOX={BOX} turn={playerTurn} onSelectButton={handleClickButton}/>
-        </ol>
+        <div>
+          {(playerPoints >= 36) && <GameOver redPoints={redPoints} bluePoints={bluePoints}></GameOver>}
+
+          <h3 className={turnText} >{playerTurn}</h3>
+          <ol className= "flex flex-wrap justify-center gap-0 m-5 p-5 bg-slate-500 flex-col">
+            <GameBoard HOR_LINES={HOR_LINES} VER_LINES={VER_LINES} BOX={BOX} turn={playerTurn} onSelectButton={handleClickButton}/>
+          </ol>
+        </div>
+        
         <h3 className="text-center m-5 text-2xl text-red-500" >Red: {redPoints}</h3>
         <h3 className="text-center m-5 text-2xl text-blue-500" >Blue: {bluePoints}</h3>
 

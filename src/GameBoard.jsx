@@ -36,7 +36,7 @@ export default function({HOR_LINES,VER_LINES,BOX,turn,onSelectButton}){
       
     function makeRow2(row){
         let lineClass="h-16 w-5 text-black";
-        let boxClass="h-16 w-16 bg-gray-400";
+        let boxClass="h-16 w-16";
         let currentLineClass="";
         let currentBoxClass="";
         const row2=[]
